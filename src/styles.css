@@ -1,1 +1,386 @@
+
+body {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
 /* You can add global styles to this file, and also import other style files */
+.example-box {
+    width: 200px;
+    height: 400px;
+    border: solid 1px #ccc;
+    color: rgba(0, 0, 0, 0.87);
+    cursor: move;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #fff;
+    border-radius: 4px;
+    position: relative;
+    z-index: 98;
+    transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+                0 2px 2px 0 rgba(0, 0, 0, 0.14),
+                0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  }
+  
+  .example-box:active {
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+
+  .divCentral {
+      height: 80vh;
+      background-color: azure;
+  }
+
+  .divCards {
+    height: 5vh;
+    justify-content: center;
+  }
+
+  .divCards-arriba, .example-box-up {
+    background-color: #d7ecff;
+  }
+ 
+  .example-box-up {
+    transform: translate3d(0px, -353px, 0px);
+  }
+  
+  .divCards-abajo, .example-box-down {
+      background-color: #eae8d2;
+  }
+
+  .colCentral {
+    background-color: #f5f5f5;
+  }
+
+  .colLateral {
+      background-color: #e8e8e8;;
+  }
+  
+  /*INI-PRUEBA CODEPEN*/
+
+  body {
+    font-family: Roboto, sans-serif;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    background: #fafafa;
+  }
+  
+  h1 {
+    font-weight: 700;
+    font-size: 64px;
+    margin: 20px 0 0 0;
+    padding: 0 20px;
+  }
+  
+  p {
+    font-size: 16px;
+    padding: 0 20px;
+  }
+  
+  em {
+    font-style: normal;
+    color: #ffc400;
+  }
+  
+  a {
+    font-style: normal;
+    color: #ffd740;
+    text-decoration: none;
+    padding-right: 10px;
+    cursor: pointer;
+  }
+  
+  .sub {
+    margin: 0;
+  }
+  
+  .button {
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    font-size: 20px;
+    line-height: 60px;
+    font-weight: bold;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .expand .button {
+    -webkit-transform: rotate(630deg);
+            transform: rotate(630deg);
+    -webkit-transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .containerCard {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 5vh;
+    background-color: #03a9f4;
+    border-radius: 50%;
+    width: 60px;
+    max-width: 60px;
+    height: 60px;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    overflow: hidden;
+    /*-webkit-transition: all 0.2s 0.45s, height 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.25s, max-width 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.35s, width 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.35s;
+    transition: all 0.2s 0.45s, height 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.25s, max-width 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.35s, width 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.35s;*/
+  }
+  
+  .containerCard.expand {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.17);
+    border-radius: 0;
+    width: 80%;
+    height: 500px;
+    max-width: 600px;
+    padding: 0;
+    -webkit-transition: all 0.2s, max-width 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.1s, height 0.3s ease 0.25s;
+    transition: all 0.2s, max-width 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.1s, height 0.3s ease 0.25s;
+  }
+  
+  .content {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    text-align: left;
+    -webkit-transition: opacity 0.2s 0.2s, -webkit-transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.2s 0.2s, -webkit-transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s 0.2s;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s 0.2s, -webkit-transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .expand .content {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+    opacity: 1;
+    -webkit-transition: opacity 0s, -webkit-transform 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.05s;
+    transition: opacity 0s, -webkit-transform 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.05s;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.05s, opacity 0s;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.05s, opacity 0s, -webkit-transform 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.05s;
+  }
+  
+  .content .head {
+    padding: 0 0 20px 0;
+  }
+  
+  .content .body {
+    color: #000;
+    color: rgba(0, 0, 0, 0.87);
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 10px 0;
+    box-sizing: border-box;
+  }
+  
+  .action-bar {
+    padding-left: 15px;
+    border-top: 1px solid #e0e0e0;
+    width: 100%;
+  }
+  
+  .action-bar a {
+    text-transform: uppercase;
+    line-height: 52px;
+    color: #ffc400;
+  }
+
+/*FIN PRUEBA-CODEPEN*/  
+
+/*INI Prueba limite para bajar card*/
+.example-boundary {
+  width: 400px;
+  height: 400px;
+  max-width: 100%;
+  z-index: 99;
+  border: dotted #ccc 2px;
+}
+/*FIN Prueba limite para bajar card*/
+
+
+.mydialog {
+  width: 50vw;
+}
+
+@media screen and (max-width: 40em) {
+  .mydialog {
+      width: 75vw;
+  }
+}
+
+/*INI-ORDENAR LISTA*/
+
+.example-list {
+  width: 500px;
+  max-width: 100%;
+  border: solid 1px #ccc;
+  min-height: 60px;
+  display: block;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.example-boxLista {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-boxLista:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-boxLista:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-custom-placeholder {
+  background: #ccc;
+  border: dotted 3px #999;
+  min-height: 60px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/*FIN- ORDENAR LISTA*/
+
+/*INICIO - MENU DESPLEGABLE*/
+
+#header {
+  height: 40px;
+  width: 198px;
+  margin-right: 20px;
+  border: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  background: #353541 !important;
+  position: relative;
+  z-index: 30;
+  cursor: -webkit-grab;
+  cursor: grab;
+  text-align: center;
+  background-color: rgb(114, 169, 218) !important;
+
+  transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+                0 2px 2px 0 rgba(0, 0, 0, 0.14),
+                0 1px 5px 0 rgba(0, 0, 0, 0.12);
+
+}
+#header:active {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+#menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: absolute;
+  top: 55%;
+  margin: -15px 0px;
+  -webkit-transition: -webkit-transform .2s ease-out;
+  transition: -webkit-transform .2s ease-out;
+  transition: transform .2s ease-out;
+  transition: transform .2s ease-out, -webkit-transform .2s ease-out;
+}
+#menu li {
+  color: #FFF;
+  font-size: 15px;
+  font-weight: 600;
+  display: inline-block;
+  /*padding: 0 20px;*/
+  /* opacity: 0;
+  -webkit-transition: opacity .2s ease-out;
+  transition: opacity .2s ease-out; */
+}
+/* #menu li.show {
+  opacity: 1 !important;
+} */
+#menu li.reload {
+  margin-left: 200px;
+  position: relative;
+  top: 6px;
+  /* -webkit-transition: opacity 0s ease-out;
+  transition: opacity 0s ease-out; */
+}
+/* #menu.show li {
+  opacity: .2;
+} */
+#menu.notrans {
+  -webkit-transition: none;
+  transition: none;
+}
+
+.ulExpandido{
+  top: 70% !important;
+}
+
+.p-progressbar .p-progressbar-value {
+  background: #4981d4;
+}
+
+.p-progressbar .p-progressbar-label {
+  color: #49505700;
+}
+
+.p-progressbar {
+  height: 0.3rem
+}
+
+.p-progressbar {
+  background:none;
+}
+
+.p-progressbar-determinate .p-progressbar-value-animate {
+   /*transition: width 1s ease-in-out;*/
+   transition: unset !important;
+}
+
+.contentTarjeta{
+  height: 0;
+}
+  
+
+/*FIN - MENU DESPLEGABLE*/

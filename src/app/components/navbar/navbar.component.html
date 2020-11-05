@@ -1,0 +1,43 @@
+
+<!--<p-menubar [model]="items">
+    <ng-template pTemplate="start">
+        <label class="ml-2">Lopez Juan - DNI 12345678 - 49 años - Delegación Pergamino - Loc. Atención Médica: Pehuajo.</label>
+    </ng-template>
+</p-menubar>-->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd; z-index: 99;">
+
+    <span class="ml-2" style="font-size: 25px; color: Dodgerblue;">
+        <i class="fas fa-user"></i>
+      </span>
+      
+      <span class="ml-4 navbar-text">
+        <b>Lopez Juan - DNI 12345678 - 49 años - Delegación Pergamino - Loc. Atención Médica: Pehuajo.</b>
+      </span>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        
+      </ul>
+      <ul class="navbar-nav mr-4">
+
+        <li class="nav-item dropdown dropleft">
+            <a class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 115px;">
+                <i class="fas fa-bars"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a (click)="guardar()" class="dropdown-item" href="#"><i class="fas fa-save fa-lg mr-3 text-primary"></i>Guardar</a>
+              <a class="dropdown-item" href="#"><i class="fas fa-store-slash fa-lg mr-3 text-warning"></i>Cerrar Atención</a>
+              <a class="dropdown-item" href="#"><i class="fas fa-copy fa-lg mr-3 text-secondary"></i>Dejar en Resolución</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#"><i class="fas fa-times-circle fa-lg mr-3 text-danger"></i>Cancelar atención</a>
+            </div>
+          </li>
+
+      </ul>
+    </div>
+  </nav>
