@@ -4,12 +4,11 @@
     <div class="row divCards divCards-arriba">
         <!--Cards superiores-->
         <!--<app-cards></app-cards>-->
-        <div class="col d-flex justify-content-center">
+        <div class="p-0 col d-flex justify-content-center">
 
-            <div id="header">
+            <!--<div id="header"  (click)="mostrarDetalleTarjeta()">
                 <p-progressBar [value]="porcentajeCard" mode="determinate"></p-progressBar>
                 <ul id="menu">
-                  <!--<li>{{ mostrarDetalleObs | async}}</li>-->
                   <li>
                     <div id="detallesTarjeta">
                         <ul>
@@ -21,20 +20,13 @@
                 </li>
                 <li>Examen Físico</li>
                 </ul>
-              </div>
+              </div>-->
 
-              <!-- <div id="header">
-                <p-progressBar [value]="porcentajeCard" mode="determinate"></p-progressBar>
-                <ul id="menu">
-                  <li>Examen Físico</li>
-                  <li>Edad: 40.</li>
-                  <li>Altura: 180.</li>
-                  <li>Peso: 90kg.</li>
-                </ul>
-              </div> -->
             <div class="row">
+                <!--animate__animated animate__slideInDown-->
 
-                <div class="example-box example-box-up" *ngFor="let card of cardList" cdkDrag [cdkDragDisabled]="sePuedeMover" cdkDragLockAxis="y" [cdkDragFreeDragPosition]="dragPosition">{{card.titulo}}</div>
+                <div class="example-box example-box-up" *ngFor="let card of cardList" cdkDrag [cdkDragDisabled]="sePuedeMover" cdkDragBoundary=".limiteDrag" cdkDragLockAxis="y" [cdkDragFreeDragPosition]="dragPosition">{{card.titulo}}</div>
+
 
                 <div class="col d-flex justify-content-center">
                     <div class="row">
@@ -90,6 +82,44 @@
                   </div>
             </p-dialog>
 
+            <!--------------------------------------------------->
+
+            <p-card class="m-2" header="header" (click)="modalTransferirListas()">
+                <b>Listas</b>
+            </p-card>
+
+            <p-dialog header="Lista" [(visible)]="showModalTransferirListas" [maximizable]="true" [style]="{width: '50vw'}">
+                
+                <div class="example-container">
+                    <h2>To do</h2>
+                  
+                    <div
+                      cdkDropList
+                      #todoList="cdkDropList"
+                      [cdkDropListData]="todo"
+                      [cdkDropListConnectedTo]="[doneList]"
+                      class="example-list"
+                      (cdkDropListDropped)="dropIntercambiar($event)">
+                      <div class="example-boxLista" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+                    </div>
+                  </div>
+                  
+                  <div class="example-container">
+                    <h2>Done</h2>
+                  
+                    <div
+                      cdkDropList
+                      #doneList="cdkDropList"
+                      [cdkDropListData]="done"
+                      [cdkDropListConnectedTo]="[todoList]"
+                      class="example-list"
+                      (cdkDropListDropped)="dropIntercambiar($event)">
+                      <div class="example-boxLista" *ngFor="let item of done" cdkDrag>{{item}}</div>
+                    </div>
+                  </div>
+                
+            </p-dialog>
+
         </div>
 
         <div class="col col-md-8 colCentral">
@@ -107,12 +137,81 @@
     <div class="row divCards divCards-abajo">
         <!--Cards inferiores-->
         <!--<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)" (cdkDropListExited)="prueba($event)">-->
-            
-            <div class="col d-flex justify-content-center">
-                <div class="row">
-                    <!--<div class="example-box example-box-down" *ngFor="let card of cardList" cdkDrag>{{card.titulo}}</div>--> <!--ANTES DE CODEPEN--> 
 
-                    <!--INI-CODEPEN-->
+        <div class="col d-flex justify-content-center">
+
+          <div class="row">
+
+              <div class="col">
+                <div [ngClass]="{'minimized': ventanaMinimizada1}">
+                  <div id="window1" class="window" [ngClass]="{'window-maximize': !ventanaMinimizada1}">
+                    <nav class="window-controls">
+                      <div class="maximize" (click)="ventanaMinimizada1 = !ventanaMinimizada1">Exámen Físico</div>
+                      <div class="close"></div>
+                      <div class="minimize" (click)="ventanaMinimizada1 = !ventanaMinimizada1"></div>
+                    </nav>
+                    
+                    <aside class="window-sidebar">
+                      <div class="content-block"></div>
+                      <div class="content-block"></div>
+                      <div class="content-block"></div>
+                      <div class="content-block"></div>
+                    </aside>
+                    
+                    <section class="window-content"></section>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col">
+                <div [ngClass]="{'minimized': ventanaMinimizada2}">
+                  <div id="window2" class="window" [ngClass]="{'window-maximize': !ventanaMinimizada2}">
+                    <nav class="window-controls">
+                      <div class="maximize" (click)="ventanaMinimizada2 = !ventanaMinimizada2">Exámen Físico</div>
+                      <div class="close"></div>
+                      <div class="minimize" (click)="ventanaMinimizada2 = !ventanaMinimizada2"></div>
+                    </nav>
+                    
+                    <aside class="window-sidebar">
+                      <div class="content-block"></div>
+                      <div class="content-block"></div>
+                      <div class="content-block"></div>
+                      <div class="content-block"></div>
+                    </aside>
+                    
+                    <section class="window-content"></section>
+                  </div>
+                </div>
+    
+              </div>
+            </div>
+
+            <div class="col">
+              <div [ngClass]="{'minimized': ventanaMinimizada3}">
+                <div id="window3" class="window" [ngClass]="{'window-maximize': !ventanaMinimizada3}">
+                  <nav class="window-controls">
+                    <div class="maximize" (click)="ventanaMinimizada3 = !ventanaMinimizada3">Exámen Físico</div>
+                    <div class="close"></div>
+                    <div class="minimize" (click)="ventanaMinimizada3 = !ventanaMinimizada3"></div>
+                  </nav>
+                  
+                  <aside class="window-sidebar">
+                    <div class="content-block"></div>
+                    <div class="content-block"></div>
+                    <div class="content-block"></div>
+                    <div class="content-block"></div>
+                  </aside>
+                  
+                  <section class="window-content"></section>
+                </div>
+              </div>
+            </div>
+
+        </div>
+            
+            <!--<div class="col d-flex justify-content-center">
+                <div class="row">
+                    
                     <div cdkDrag [ngClass]="expandir ? 'containerCard expand' : 'containerCard'"><span (click)="expandir = !expandir" class="button">&#10006;</span>
                         <div class="content">
                           <div class="head">
@@ -125,12 +224,9 @@
                             <div class="action-bar"><a>SHARE</a><a>LEARN MORE</a></div>
                           </div>
                         </div>
-                      </div>
-                      <!--FIN-CODEPEN-->
-
-                    
+                      </div>                    
                 </div>
-            </div>
+            </div>-->
 
         <!--</div>-->
         <!--<app-cards></app-cards>-->

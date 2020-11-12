@@ -1,4 +1,4 @@
-import { CdkDragDrop, CdkDragExit, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, CdkDragExit, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Card } from './models/card.model';
 import $ from 'jquery';
@@ -30,11 +30,17 @@ export class AppComponent {
   expandir : boolean = false;
   showModalGraficos: boolean = false;
   showModalOrdenarLista: boolean = false;
+  showModalTransferirListas: boolean = false;
   dataGrafico : any;
   sePuedeMover : boolean = false;
   porcentajeCard : number = 0;
   _mostrarDetalleCard : boolean = false;
   prueba2 : string = '';
+  puedeClickearTarjeta : boolean = false;
+  ventanaMinimizada1 : boolean = true;
+  ventanaMinimizada2 : boolean = true;
+  ventanaMinimizada3 : boolean = true;
+
 
   /*private _mostrarDetalleSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public mostrarDetalleObs: Observable<boolean> = this._mostrarDetalleSubject.asObservable();*/
@@ -98,6 +104,11 @@ export class AppComponent {
 
   $('#header').on('mousedown', (e) => {
   //
+  
+  e.preventDefault();
+  $(this).css('cursor','pointer');
+
+  console.log('en evento mousedown');
   mouse_down = true;
   this.mouseDown = true;
   mouse_start_y = e.pageY;
@@ -162,11 +173,8 @@ $(document).mousemove((e) => {
 
     //this._mostrarDetalleSubject.next($("#header").height() >= 150);
 
-    if($("#header").height() >= 220) {
-      this.showModalGraficos = true;
-      colapsarTarjeta();
-    }
-
+    this.puedeClickearTarjeta = $("#header").height() >= 220;
+    
     if (diff > release) {
       $("#menu").addClass("show");
     }
@@ -227,6 +235,10 @@ $(document).mousemove((e) => {
     this.showModalOrdenarLista = true;
   }
 
+  modalTransferirListas(){
+    this.showModalTransferirListas = true;
+  }
+
   armarGraficoBarras() {
     this.dataGrafico = {
       labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
@@ -250,5 +262,49 @@ $(document).mousemove((e) => {
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
   }
+
+  mostrarDetalleTarjeta(){
+
+    if(this.puedeClickearTarjeta) {
+        
+      this.showModalGraficos = true;
+
+      /*Colapso la tarjeta*/
+      this.porcentajeCard = 0;
+      $("#header").animate({ height: 46 }, 300);
+
+    }
+  
+  }
+
+  /**Ini-Intercambiar listas**/
+
+  todo = [
+    'Get to work',
+    'Pick up groceries',
+    'Go home',
+    'Fall asleep'
+  ];
+
+  done = [
+    'Get up',
+    'Brush teeth',
+    'Take a shower',
+    'Check e-mail',
+    'Walk dog'
+  ];
+
+  dropIntercambiar(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+                        event.container.data,
+                        event.previousIndex,
+                        event.currentIndex);
+    }
+  }
+
+  /**Fin-Intercambiar listas**/
 
 }
